@@ -1,16 +1,32 @@
-import { FaBookmark } from 'react-icons/fa';
+import { FaBookmark } from "react-icons/fa";
+
+// TODO Replace with more appropriate asset, like logo or icon. SVG image is preferable
+const imgFallback =
+  "https://www.homeflow.co.uk/wp-content/uploads/2019/01/homeflow-col-dkbg-rgb-01.png";
 
 function PropertyCard({ property }) {
   return (
     <div className="border-2 bg-gray-50">
       <div className="relative">
-        <img src={`https://mr0.homeflow.co.uk/${property.photos[0]}`} alt={property.display_address} />
+        <img
+          src={
+            property.photos[0]
+              ? `https://mr0.homeflow.co.uk/${property.photos[0]}`
+              : imgFallback
+          }
+          alt={property.display_address}
+        />
 
-        <button className="absolute top-0 right-2" title="Click to bookmark this property">
+        <button
+          className="absolute top-0 right-2"
+          title="Click to bookmark this property"
+        >
           <FaBookmark className="text-yellow-400" size="40" />
         </button>
 
-        <p className="absolute bottom-0 right-0 px-2 py-1 border-t border-l bg-gray-50">{property.price}</p>
+        <p className="absolute bottom-0 right-0 px-2 py-1 border-t border-l bg-gray-50">
+          {property.price}
+        </p>
       </div>
 
       <div className="px-3 py-2">
@@ -18,6 +34,6 @@ function PropertyCard({ property }) {
       </div>
     </div>
   );
-};
+}
 
 export default PropertyCard;
